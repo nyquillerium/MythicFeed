@@ -18,7 +18,7 @@ namespace MythicFeed
         {
             string consumerKey = "";
             string consumerSecret = "";
-
+#if DEBUG
             if (!File.Exists("Config.ini"))
             {
                 using (StreamWriter sw = new StreamWriter("Config.ini"))
@@ -47,8 +47,12 @@ namespace MythicFeed
                     }
 
                 }
-            }
+            } 
 
+#else
+            consumerKey = "lolno";
+            consumerSecret = "nope";
+#endif
             service = new TwitterService(consumerKey, consumerSecret);
 
             OAuthRequestToken requestToken = service.GetRequestToken();
