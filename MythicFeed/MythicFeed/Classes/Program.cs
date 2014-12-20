@@ -12,6 +12,7 @@ namespace MythicFeed
         static void Main(string[] args)
         {
             Bosses.InitDictionary();
+            Config.InitConfig();
             Connection.InitConnection();
 
             Connection.SendMessage("Now reporting highmaul encounter completion.", true);

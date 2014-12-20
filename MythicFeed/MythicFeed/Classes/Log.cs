@@ -11,7 +11,7 @@ namespace MythicFeed
 {
     public class Log
     {
-        private string systemPath = "C:/Program Files (x86)/World of Warcraft/Logs/WoWCombatLog.txt";
+        private string systemPath = Config.LogPath;
 
         public Log()
         {

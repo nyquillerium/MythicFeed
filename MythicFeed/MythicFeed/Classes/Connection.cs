@@ -16,44 +16,7 @@ namespace MythicFeed
 
         public static void InitConnection()
         {
-            string consumerKey = "";
-            string consumerSecret = "";
-#if DEBUG
-            if (!File.Exists("Config.ini"))
-            {
-                using (StreamWriter sw = new StreamWriter("Config.ini"))
-                {
-                        sw.WriteLine("[Auth]");
-                        sw.WriteLine("consumerKey = 123456789");
-                        sw.WriteLine("consumerSecret = 123456789");
-                }
-                Console.WriteLine("You do not have your configuration set up yet! Please fill out Config.ini before continuing.");
-                Console.ReadKey();
-            }
-
-            using (StreamReader sr = new StreamReader("Config.ini"))
-            {
-                string line;
-                while ((line = sr.ReadLine()) != null)
-                {
-                    switch (line.Split(' ')[0])
-                    {
-                        case "consumerKey":
-                            consumerKey = line.Split(' ')[2];
-                            break;
-                        case "consumerSecret":
-                            consumerSecret = line.Split(' ')[2];
-                            break;
-                    }
-
-                }
-            } 
-
-#else
-            consumerKey = "lolno";
-            consumerSecret = "nope";
-#endif
-            service = new TwitterService(consumerKey, consumerSecret);
+            service = new TwitterService(Config.ConsumerKey, Config.ConsumerSecret);
 
             OAuthRequestToken requestToken = service.GetRequestToken();
 
@@ -63,10 +26,11 @@ namespace MythicFeed
             Console.WriteLine("Enter auth verifier:");
             string verifier = Console.ReadLine(); 
             OAuthAccessToken access = service.GetAccessToken(requestToken, verifier);
-            Console.WriteLine("Authenticated!");
-            Console.WriteLine();
 
             service.AuthenticateWith(access.Token, access.TokenSecret);
+            //TODO: Auth error checking.
+            Console.WriteLine("Authenticated!");
+            Console.WriteLine();
 
             VerifyCredentialsOptions userOptions = new VerifyCredentialsOptions();
             user = service.VerifyCredentials(userOptions);
