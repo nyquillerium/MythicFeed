@@ -14,7 +14,7 @@ namespace MythicFeed
             Bosses.InitDictionary();
             Connection.InitConnection();
 
-            Connection.SendMessage("Now reporting highmaul encounter completion.");
+            Connection.SendMessage("Now reporting highmaul encounter completion.", true);
 
             Log combatLog = new Log();
 

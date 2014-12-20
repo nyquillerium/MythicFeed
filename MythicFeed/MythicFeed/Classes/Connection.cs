@@ -72,8 +72,11 @@ namespace MythicFeed
             user = service.VerifyCredentials(userOptions);
         }
 
-        public static void SendMessage(string Message)
+        public static void SendMessage(string Message, bool bounce = false)
         {
+            if (bounce)
+                Console.WriteLine(Message);
+
             SendTweetOptions options = new SendTweetOptions();
             options.Status = string.Format("[MythicFeed] " + Message + " @{0}", user.ScreenName);
             service.SendTweet(options);
