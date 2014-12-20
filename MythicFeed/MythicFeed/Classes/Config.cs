@@ -14,9 +14,10 @@ namespace MythicFeed
         internal static string ConsumerSecret;
         internal static string LogPath;
 
+        internal static bool IgnoreLFR;
+
         internal static void InitConfig()
         {
-#if DEBUG
             if (!File.Exists("Config.ini"))
             {
                 using (StreamWriter sw = new StreamWriter("Config.ini"))
@@ -28,12 +29,21 @@ namespace MythicFeed
 
                     sw.WriteLine("[FileSystem]");
                     sw.WriteLine("LogPath = C:/Program Files (x86)/World of Warcraft/Logs/WoWCombatLog.txt");
+
+                    sw.WriteLine();
+                    sw.WriteLine("[Flags]");
+                    sw.WriteLine("IgnoreLFR = 1");
                 }
                 Console.WriteLine("You do not have your configuration set up yet! Please fill out Config.ini before continuing.");
                 Console.ReadKey();
                 Environment.Exit(0);
             }
 
+            ReadConfig();
+        }
+
+        internal static void ReadConfig()
+        {
             using (StreamReader sr = new StreamReader("Config.ini"))
             {
                 string line;
@@ -41,21 +51,28 @@ namespace MythicFeed
                 {
                     switch (line.Split(' ')[0])
                     {
+#if DEBUG
                         case "consumerKey":
                             ConsumerKey = line.Split(' ')[2];
                             break;
                         case "consumerSecret":
                             ConsumerSecret = line.Split(' ')[2];
                             break;
+#endif
                         case "LogPath":
                             LogPath = line.Split(' ')[2];
                             break;
-                    }
 
+                        case "IgnoreLFR":
+                            if (int.Parse(line.Split(' ')[2]) == 1)
+                                IgnoreLFR = true;
+                            else
+                                IgnoreLFR = false;
+                            break;
+                    }
                 }
             }
-
-#else
+#if RELEASE
             ConsumerKey = "lolno";
             ConsumerSecret = "nope";
 #endif

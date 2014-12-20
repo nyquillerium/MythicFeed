@@ -24,22 +24,22 @@ namespace MythicFeed
 
                     if (!String.IsNullOrWhiteSpace(line))
                     {
-                        if (line.Split(',')[0].Split(' ')[3] == "UNIT_DIED")
-                            {
+                        switch (line.Split(',')[0].Split(' ')[3])
+                        {
+                            case "ENCOUNTER_START":
+                                int id = int.Parse(line.Split(',')[1]);
+                                break;
+
+                            case "UNIT_DIED":
                                 string unitName = line.Split(',')[6];
 #if DEBUG
-                                Console.WriteLine(unitName + " GOT FUCKING WRECKED");
+                                Console.WriteLine(unitName + " died");
 #endif
-                                if (Bosses.Dick.ContainsKey(unitName))
-                                {
-                                    Connection.SendMessage(unitName + "(Normal) has been downed!"); //wow this is ghetto as fug
-                                }
-                            }
-                        //Console.WriteLine("EVENT: " + line);
+                                break;
+                        }
                     }
                 }
             }
         }
-
     }
 }
