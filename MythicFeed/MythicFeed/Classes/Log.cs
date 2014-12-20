@@ -32,7 +32,7 @@ namespace MythicFeed
             using (var fs = new FileStream(systemPath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite | FileShare.Delete))
             using (var reader = new StreamReader(fs))
             {
-                string currentEncounter;
+                string startTime;
                 while (true)
                 {
                     var line = reader.ReadLine();
@@ -41,25 +41,40 @@ namespace MythicFeed
                     {
                         string name;
                         string timeStamp;
-                        switch (line.Split(',')[0].Split(' ')[3])
+                        int difficulty;
+                        switch (line.Split(',')[0].Split(' ')[2])
                         {
                             case "ENCOUNTER_START":
                                 name = line.Split(',')[2];
-                                timeStamp = line.Split(',')[0].Split(' ')[2];
-                                currentEncounter = name;
-                                Connection.SendMessage("Encounter of " + name + parseDifficulty(int.Parse(line.Split(',')[3])) + " started at " + timeStamp + ".", true);
+                                timeStamp = line.Split(',')[0].Split(' ')[1];
+                                difficulty = int.Parse(line.Split(',')[3]);
+
+                                if (difficulty == 7 && Config.IgnoreLFR)
+                                    break;
+
+                                Connection.SendMessage("Encounter of " + name + parseDifficulty(difficulty) + " started at " + timeStamp + ".", true);
+                                startTime = timeStamp;
                                 break;
 
                             case "ENCOUNTER_END":
                                 name = line.Split(',')[2];
-                                break;
+                                timeStamp = line.Split(',')[0].Split(' ')[2];
+                                difficulty = int.Parse(line.Split(',')[3]);
 
+                                if (difficulty == 7 && Config.IgnoreLFR || line.Split(',')[5] == "0") //do not report if wipe
+                                    break;
+
+                                //TODO: ADD DURATION LOGIC
+                                //float duration = float.Parse(timeStamp.Split(':')[2] )
+
+                                Connection.SendMessage(name + parseDifficulty(difficulty) + " downed at " + timeStamp + "!", true);
+                                break;
+#if DEBUG
                             case "UNIT_DIED":
                                 string unitName = line.Split(',')[6];
-#if DEBUG
                                 Console.WriteLine(unitName + " died");
-#endif
                                 break;
+#endif
                         }
                     }
                 }
