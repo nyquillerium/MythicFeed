@@ -14,6 +14,7 @@ namespace MythicFeed
         public static void InitDictionary()
         {
             //initialize boss names
+            //TODO: Pair boss names with IDs to be localization friendly.
             Dick = new Dictionary<string, int>();
             Dick.Add("Kargath Bladefist", 1);
             Dick.Add("The Butcher", 2);
