@@ -31,6 +31,7 @@ namespace MythicFeed
                 }
                 Console.WriteLine("You do not have your configuration set up yet! Please fill out Config.ini before continuing.");
                 Console.ReadKey();
+                Environment.Exit(0);
             }
 
             using (StreamReader sr = new StreamReader("Config.ini"))
