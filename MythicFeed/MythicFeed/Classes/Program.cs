@@ -15,7 +15,7 @@ namespace MythicFeed
             Config.InitConfig();
             Connection.InitConnection();
 
-            Connection.SendMessage("Now reporting highmaul encounter completion.", true);
+            //Connection.SendMessage("Now reporting highmaul encounter completion.", true);
 
             Log combatLog = new Log();
 
