@@ -42,11 +42,11 @@ namespace MythicFeed
                         string name;
                         string timeStamp;
                         int difficulty;
-                        switch (line.Split(',')[0].Split(' ')[2])
+                        switch (line.Split(',')[0].Split(' ')[3])
                         {
                             case "ENCOUNTER_START":
                                 name = line.Split(',')[2];
-                                timeStamp = line.Split(',')[0].Split(' ')[1];
+                                timeStamp = line.Split(',')[0].Split(' ')[2];
                                 difficulty = int.Parse(line.Split(',')[3]);
 
                                 if (difficulty == 7 && Config.IgnoreLFR)

@@ -60,7 +60,8 @@ namespace MythicFeed
                             break;
 #endif
                         case "LogPath":
-                            LogPath = line.Split(' ')[2];
+                            var path = line.Split(' ');
+                            LogPath = string.Join(" ", path.Skip(2));
                             break;
 
                         case "IgnoreLFR":
