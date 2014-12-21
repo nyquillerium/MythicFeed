@@ -22,10 +22,12 @@ namespace MythicFeed
             {
                 using (StreamWriter sw = new StreamWriter("Config.ini"))
                 {
+#if DEBUG
                     sw.WriteLine("[Auth]");
                     sw.WriteLine("ConsumerKey = 123456789");
                     sw.WriteLine("ConsumerSecret = 123456789");
                     sw.WriteLine();
+#endif
 
                     sw.WriteLine("[FileSystem]");
                     sw.WriteLine("LogPath = C:/Program Files (x86)/World of Warcraft/Logs/WoWCombatLog.txt");
@@ -74,8 +76,8 @@ namespace MythicFeed
                 }
             }
 #if RELEASE
-            ConsumerKey = "lolno";
-            ConsumerSecret = "nope";
+            ConsumerKey = "";
+            ConsumerSecret = "";
 #endif
         }
     }
