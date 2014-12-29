@@ -13,7 +13,6 @@ namespace MythicFeed
         {
             StreamText streamText;
             
-            Bosses.InitDictionary();
             Config.InitConfig();
             Connection.InitConnection();
 

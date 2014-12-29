@@ -50,7 +50,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\Bosses.cs" />
     <Compile Include="Classes\Config.cs" />
     <Compile Include="Classes\Connection.cs" />
     <Compile Include="Classes\Log.cs" />
