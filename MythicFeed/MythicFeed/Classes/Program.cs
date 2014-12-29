@@ -11,13 +11,18 @@ namespace MythicFeed
     {
         static void Main(string[] args)
         {
+            StreamText streamText;
+            
             Bosses.InitDictionary();
             Config.InitConfig();
             Connection.InitConnection();
 
-            Connection.SendMessage("Now reporting highmaul encounter completion.", true);
+            Connection.SendMessage("Now reporting World of Warcraft encounters.", true);
 
             Log combatLog = new Log();
+
+            if (Config.WriteStream)
+                streamText = new StreamText();
 
             Console.ReadKey();
         }
