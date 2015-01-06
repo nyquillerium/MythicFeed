@@ -12,3 +12,14 @@ C:\Users\Nyquill\Documents\GitHub\MythicFeed\MythicFeed\MythicFeed\obj\Debug\Myt
 C:\Users\Nyquill\Documents\GitHub\MythicFeed\MythicFeed\MythicFeed\obj\Debug\MythicFeed.exe
 C:\Users\Nyquill\Documents\GitHub\MythicFeed\MythicFeed\MythicFeed\obj\Debug\MythicFeed.pdb
 C:\Users\100523799\Documents\GitHub\MythicFeed\MythicFeed\MythicFeed\bin\Debug\MythicFeed.exe.config
+C:\Users\100523799\Documents\GitHub\MythicFeed\MythicFeed\MythicFeed\bin\Debug\MythicFeed.exe
+C:\Users\100523799\Documents\GitHub\MythicFeed\MythicFeed\MythicFeed\bin\Debug\MythicFeed.pdb
+C:\Users\100523799\Documents\GitHub\MythicFeed\MythicFeed\MythicFeed\bin\Debug\Hammock.ClientProfile.dll
+C:\Users\100523799\Documents\GitHub\MythicFeed\MythicFeed\MythicFeed\bin\Debug\Newtonsoft.Json.dll
+C:\Users\100523799\Documents\GitHub\MythicFeed\MythicFeed\MythicFeed\bin\Debug\TweetSharp.dll
+C:\Users\100523799\Documents\GitHub\MythicFeed\MythicFeed\MythicFeed\bin\Debug\Hammock.ClientProfile.pdb
+C:\Users\100523799\Documents\GitHub\MythicFeed\MythicFeed\MythicFeed\bin\Debug\Newtonsoft.Json.xml
+C:\Users\100523799\Documents\GitHub\MythicFeed\MythicFeed\MythicFeed\bin\Debug\TweetSharp.pdb
+C:\Users\100523799\Documents\GitHub\MythicFeed\MythicFeed\MythicFeed\obj\Debug\MythicFeed.csprojResolveAssemblyReference.cache
+C:\Users\100523799\Documents\GitHub\MythicFeed\MythicFeed\MythicFeed\obj\Debug\MythicFeed.exe
+C:\Users\100523799\Documents\GitHub\MythicFeed\MythicFeed\MythicFeed\obj\Debug\MythicFeed.pdb

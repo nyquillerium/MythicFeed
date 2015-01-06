@@ -36,14 +36,16 @@ namespace MythicFeed
             user = service.VerifyCredentials(userOptions);
         }
 
-        public static void SendMessage(string Message, bool bounce = false)
+        public static void SendMessage(string message, bool tweet = false)
         {
-            if (bounce)
-                Console.WriteLine(Message);
-
-            SendTweetOptions options = new SendTweetOptions();
-            options.Status = string.Format("[MythicFeed] " + Message + " @{0}", user.ScreenName);
-            service.SendTweet(options);
+            if (tweet)
+            {
+                SendTweetOptions options = new SendTweetOptions();
+                options.Status = string.Format("[MythicFeed] " + message + " @{0}", user.ScreenName);
+                service.SendTweet(options);
+            }
+            
+            Console.WriteLine(message);
         }
     }
 }

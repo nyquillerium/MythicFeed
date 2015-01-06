@@ -17,6 +17,8 @@ namespace MythicFeed
         {
             switch (diff)
             {
+                case 7:
+                    return "(LFR)";
                 case 14:
                     return "(Normal)";
                 case 15:
@@ -42,6 +44,7 @@ namespace MythicFeed
                         string name;
                         string timeStamp;
                         int difficulty;
+                        bool report = true;
                         switch (line.Split(',')[0].Split(' ')[3])
                         {
                             case "ENCOUNTER_START":
@@ -50,9 +53,9 @@ namespace MythicFeed
                                 difficulty = int.Parse(line.Split(',')[3]);
 
                                 if (difficulty == 7 && Config.IgnoreLFR)
-                                    break;
+                                    report = false;
 
-                                Connection.SendMessage("Encounter of " + name + parseDifficulty(difficulty) + " started at " + timeStamp + ".", true);
+                                Connection.SendMessage("Encounter of " + name + parseDifficulty(difficulty) + " started at " + timeStamp + ".", report);
                                 startTime = timeStamp;
                                 break;
 
