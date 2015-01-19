@@ -1,6 +1,8 @@
 MythicFeed
 ==========
 
+THIS PROJECT IS OBSELETE WITH THE RELEASE OF TWITTER SUPPORT IN THE GAME.
+
 Real-time WoW reports to twitter.
 
 Planned features include twitch chat support.
@@ -10,3 +12,4 @@ On first time start, it should create a new Config.ini file. Please fill it out 
 It is advised that you clear your combat log before running the program (scary things might happen).
 
 Have Advanced combat logging on.
+
